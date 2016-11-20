@@ -1,0 +1,21 @@
+<button class="menu-button" ng-click="toggle()">
+    <span class="hamburger" ng-class="{adjust: !isCollapsed}">
+        <span class="burger-bar" ng-class="{animateTopBarClose: !isCollapsed, topBurger: isCollapsed}"></span>
+        <span class="burger-bar" ng-class="{animateBottomBarClose: !isCollapsed, middleBurger: isCollapsed}"></span>
+        <span class="burger-bar" ng-class="{animateBottomBarClose: !isCollapsed, bottomBurger: isCollapsed}"></span>
+        <span class="menu-text animated">Menu</span>
+    </span>
+</button>
+
+<div id="menu" class="menuHidden">
+
+    <div class="logo"><img src="../../img/logoSmall.png"></div>
+    <nav class="menu-nav">
+        <ul>
+            <li><a ng-click="scrollToElem('main')">Home</a></li>
+            <li><a ng-click="scrollToElem('about')">About</a></li>
+            <li><a>Work</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+    </nav>
+</div>

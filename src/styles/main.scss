@@ -1,0 +1,20 @@
+// Main SCSS Import File for Code By Jordan
+
+// Variables and Mixins
+@import 'variables';
+@import 'mixins/clearfix';
+@import 'utils';
+
+// Grid and Structure
+@import 'grid';
+@import 'structure';
+@import 'images';
+@import 'responsive';
+
+// Components
+@import 'sections';
+@import 'header';
+@import "video-cover";
+
+// Animations
+@import 'animation';

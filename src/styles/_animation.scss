@@ -1,0 +1,137 @@
+.hidden {
+  visibility: hidden;
+}
+// Menu Animation
+@keyframes top-burger-close {
+  0%{
+    background: $brand-secondary;
+  }
+  12.5% {
+    transform: rotate(90deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: translateY(10px) scale(1.12, 1.12);
+  }
+  100% {
+    transform: rotate(45deg) scale(1.25, 1.25);
+    background: $brand-grey;
+  }
+}
+@keyframes bottom-burger-close {
+  0%{
+    background: $brand-secondary;
+  }
+  12.5% {
+    transform: rotate(-90deg);
+  }
+  25% {
+    transform: rotate(-180deg);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.12, 1.12);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1.25, 1.25);
+    background: $brand-grey;
+  }
+}
+@keyframes top-burger-open {
+  0%{
+    background: $brand-grey;
+  }
+  12.5% {
+    transform: rotate(90deg);
+  }
+  25% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    background: $brand-secondary;
+  }
+}
+@keyframes bottom-burger-open {
+  0%{
+    background: $brand-grey;
+  }
+  12.5% {
+    transform: rotate(-90deg);
+  }
+  25% {
+    transform: rotate(-180deg);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    background: $brand-secondary;
+  }
+}
+@keyframes middle-burger-open {
+  0%{
+    background: $brand-grey;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+    background: $brand-secondary;
+  }
+}
+@keyframes menu-open-animation {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: perspective(800px) rotateX(-90deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform-origin: 50% 0%;
+    transform: perspective(800px) rotateX(50deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform-origin: 50% 0%;
+    transform: perspective(800px) rotateX(0deg);
+  }
+}
+@keyframes menu-close-animation {
+  0% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+  }
+
+  20% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: perspective(800px) rotateX(0deg) rotateY(10deg);
+  }
+
+  30% {
+    opacity: 1;
+    transform-origin: 0% 100%;
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg);
+  }
+
+  40% {
+    opacity: 1;
+    transform-origin: 0% 100%;
+    transform: perspective(800px) rotateX(10deg) rotateY(10deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform-origin: 100% 100%;
+    transform: perspective(800px) rotateX(90deg) rotateY(0deg);
+  }
+}

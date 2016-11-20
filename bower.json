@@ -1,0 +1,28 @@
+{
+  "name": "codebyjordan",
+  "description": "My portfolio site",
+  "main": "index.js",
+  "authors": [
+    "Grant Jordan"
+  ],
+  "moduleType": [],
+  "homepage": "http://www.codebyjordan.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "normalize-css": "^4.2.0",
+    "animate.css": "^3.5.2",
+    "angular-animate": "^1.5.8",
+    "angular-scroll": "^1.0.0",
+    "phaser": "^2.6.2"
+  }
+}

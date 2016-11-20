@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Slab|Share+Tech+Mono|Titillium+Web");
+.no-padding {
+  padding: 0 !important; }
+
+* {
+  box-sizing: border-box; }
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px; }
+  .container:before, .container:after {
+    content: " ";
+    display: table; }
+  .container:after {
+    clear: both; }
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px; }
+  .row:before, .row:after {
+    content: " ";
+    display: table; }
+  .row:after {
+    clear: both; }
+
+.col-1 {
+  width: 8.33%; }
+
+.col-2 {
+  width: 16.66%; }
+
+.col-3 {
+  width: 25%; }
+
+.col-4 {
+  width: 33.33%; }
+
+.col-5 {
+  width: 41.66%; }
+
+.col-6 {
+  width: 50%; }
+
+.col-7 {
+  width: 58.33%; }
+
+.col-8 {
+  width: 66.66%; }
+
+.col-9 {
+  width: 75%; }
+
+.col-10 {
+  width: 83.33%; }
+
+.col-11 {
+  width: 91.66%; }
+
+.col-12 {
+  width: 100%; }
+
+[class*="col-"] {
+  position: relative;
+  float: left;
+  padding: 0 0.75em; }
+
+body {
+  background-color: #FAFAFA;
+  font-size: 1em;
+  color: #686963;
+  font-family: "Titillium Web", Helvetica, Arial, sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Josefin Slab", Georgia, Times, serif;
+  color: #8AA29E;
+  line-height: 1.1; }
+
+h1 {
+  font-size: 2.5em; }
+
+h2 {
+  font-size: 2.25em; }
+
+h3 {
+  font-size: 1.75em; }
+
+h4 {
+  font-size: 1.25em; }
+
+h5 {
+  font-size: 1em; }
+
+h6 {
+  font-size: 0.85em; }
+
+hr {
+  margin: 0.375em 0; }
+
+.vertical-responsive {
+  height: auto;
+  width: 100%; }
+
+.horizontal-responsive {
+  height: 100%;
+  width: auto; }
+
+.grid-photo {
+  height: 100vh;
+  padding: 0; }
+
+.filter {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%; }
+
+.img-responsive {
+  width: 100%;
+  height: auto; }
+
+.section-primary {
+  height: 100vh;
+  background-color: #E3F2FD; }
+
+.about-text {
+  padding: 0.625em 1em; }
+  .about-text h1 {
+    font-size: 8em;
+    margin: 0.25em 0.5em; }
+  .about-text h2 {
+    font-size: 3em;
+    margin: 0.25em 0.5em; }
+  .about-text .column {
+    display: inline-block;
+    width: 20%;
+    margin-left: 5%;
+    height: 35%; }
+    .about-text .column hr {
+      width: 75%; }
+
+#game-canvas {
+  height: 100%; }
+
+.nav-down {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: 5%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  color: #DB5461; }
+
+.header {
+  z-index: 2;
+  padding: 0.25em 0.5em;
+  position: absolute;
+  top: 0; }
+  .header .menu-button {
+    z-index: 2;
+    position: absolute;
+    margin: 2.5em 0 0 3.5em;
+    padding-bottom: 20px;
+    height: 75px;
+    width: 75px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    animation-duration: 1s; }
+  .header .menu-button-round {
+    z-index: 2;
+    position: fixed;
+    margin: 2.5em 0 0 3.5em;
+    height: 75px;
+    width: 75px;
+    background-color: #DB5461;
+    border-radius: 37.5px;
+    border: none;
+    outline: none;
+    animation-duration: 1s; }
+  .header .hamburger {
+    position: absolute;
+    top: 35%;
+    left: 27%; }
+    .header .hamburger.adjust {
+      top: 45%; }
+  .header .menu-text {
+    color: #DB5461;
+    margin-left: 50px;
+    font-size: 1.25em;
+    height: 25px;
+    width: 40px;
+    animation-duration: 1s; }
+  .header .burger-bar {
+    background: #8AA29E;
+    height: 5px;
+    width: 35px;
+    position: absolute;
+    display: block;
+    content: '';
+    border-radius: 2px;
+    animation-duration: 2.5s; }
+  .header .topBurger {
+    top: 0;
+    animation-name: top-burger-open; }
+  .header .middleBurger {
+    top: 10px;
+    animation-name: middle-burger-open; }
+  .header .bottomBurger {
+    top: 20px;
+    animation-name: bottom-burger-open; }
+  .header .animateTopBarClose {
+    z-index: 1;
+    animation-name: top-burger-close;
+    background: #686963;
+    transform: rotate(45deg) scale(1.25, 1.25);
+    animation-duration: 1.5s; }
+  .header .animateBottomBarClose {
+    animation-name: bottom-burger-close;
+    background: #686963;
+    transform: rotate(-45deg) scale(1.25, 1.25);
+    animation-duration: 1.5s; }
+  .header .menu, .header .menuHidden {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 1em;
+    padding: 0.375em 0.75em;
+    background-color: #E3F2FD;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    animation-name: menu-open-animation;
+    animation-duration: 1s; }
+    .header .menu .logo, .header .menuHidden .logo {
+      text-align: center; }
+  .header .menuHidden {
+    opacity: 0;
+    animation-name: menu-close-animation;
+    animation-duration: 1s; }
+  .header .menu-nav {
+    position: absolute;
+    text-align: center;
+    width: 75%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    margin: 0 auto; }
+    .header .menu-nav ul {
+      list-style: none; }
+    .header .menu-nav li {
+      display: inline-block;
+      font-size: 2.5em;
+      font-family: "Josefin Slab", Georgia, Times, serif;
+      color: #8AA29E;
+      margin-right: 3em;
+      cursor: pointer; }
+
+.video-cover {
+  border-right: none;
+  border-left: none;
+  position: relative; }
+
+.video-container {
+  position: relative;
+  bottom: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000; }
+  .video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute; }
+  .video-container .filter {
+    z-index: 1;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%; }
+  .video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0; }
+  .video-container video.fillWidth {
+    width: 100%; }
+
+.cover-logo {
+  position: absolute;
+  width: 75%;
+  margin: 0 auto;
+  right: 0;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center; }
+  .cover-logo h1 span {
+    display: block;
+    font-size: 0.5em;
+    line-height: 1.42857; }
+
+.hidden {
+  visibility: hidden; }
+
+@keyframes top-burger-close {
+  0% {
+    background: #8AA29E; }
+  12.5% {
+    transform: rotate(90deg); }
+  25% {
+    transform: rotate(180deg); }
+  50% {
+    transform: translateY(10px) scale(1.12, 1.12); }
+  100% {
+    transform: rotate(45deg) scale(1.25, 1.25);
+    background: #686963; } }
+@keyframes bottom-burger-close {
+  0% {
+    background: #8AA29E; }
+  12.5% {
+    transform: rotate(-90deg); }
+  25% {
+    transform: rotate(-180deg); }
+  50% {
+    transform: translateY(-10px) scale(1.12, 1.12); }
+  100% {
+    transform: rotate(-45deg) scale(1.25, 1.25);
+    background: #686963; } }
+@keyframes top-burger-open {
+  0% {
+    background: #686963; }
+  12.5% {
+    transform: rotate(90deg); }
+  25% {
+    transform: rotate(180deg); }
+  50% {
+    transform: translateY(-10px); }
+  100% {
+    background: #8AA29E; } }
+@keyframes bottom-burger-open {
+  0% {
+    background: #686963; }
+  12.5% {
+    transform: rotate(-90deg); }
+  25% {
+    transform: rotate(-180deg); }
+  50% {
+    transform: translateY(10px); }
+  100% {
+    background: #8AA29E; } }
+@keyframes middle-burger-open {
+  0% {
+    background: #686963;
+    transform: scale(0); }
+  50% {
+    transform: scale(2); }
+  100% {
+    transform: scale(1);
+    background: #8AA29E; } }
+@keyframes menu-open-animation {
+  0% {
+    opacity: 0;
+    transform-origin: 50% 0%;
+    transform: perspective(800px) rotateX(-90deg); }
+  50% {
+    opacity: 1;
+    transform-origin: 50% 0%;
+    transform: perspective(800px) rotateX(50deg); }
+  100% {
+    opacity: 1;
+    transform-origin: 50% 0%;
+    transform: perspective(800px) rotateX(0deg); } }
+@keyframes menu-close-animation {
+  0% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg); }
+  20% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: perspective(800px) rotateX(0deg) rotateY(10deg); }
+  30% {
+    opacity: 1;
+    transform-origin: 0% 100%;
+    transform: perspective(800px) rotateX(0deg) rotateY(0deg); }
+  40% {
+    opacity: 1;
+    transform-origin: 0% 100%;
+    transform: perspective(800px) rotateX(10deg) rotateY(10deg); }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 100%;
+    transform: perspective(800px) rotateX(90deg) rotateY(0deg); } }
+
+/*# sourceMappingURL=main.css.map */

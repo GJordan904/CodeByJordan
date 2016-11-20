@@ -1,0 +1,142 @@
+.header {
+  z-index: 2;
+  padding: $padding-small-vert $padding-small-hori;
+  position: absolute;
+  top: 0;
+
+  .menu-button {
+    z-index: 2;
+    position: absolute;
+    margin: $menu-btn-margins;
+    padding-bottom: 20px;
+    height: 75px;
+    width: 75px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    animation-duration: 1s;
+  }
+
+  .menu-button-round {
+    z-index: 2;
+    position: fixed;
+    margin: $menu-btn-margins;
+    height: 75px;
+    width: 75px;
+    background-color: $brand-danger;
+    border-radius: 37.5px;
+    border: none;
+    outline: none;
+    animation-duration: 1s;
+  }
+
+  .hamburger {
+    position: absolute;
+    top: 35%;
+    left: 27%;
+
+    &.adjust {
+      top: 45%;
+    }
+  }
+
+  .menu-text {
+    color: $brand-danger;
+    margin-left: 50px;
+    font-size: $font-size-large;
+    height: 25px;
+    width: 40px;
+    animation-duration: 1s;
+  }
+
+  .burger-bar {
+    background: $headings-color;
+    height: 5px;
+    width: 35px;
+    position: absolute;
+    display: block;
+    content: '';
+    border-radius: 2px;
+    animation-duration: 2.5s;
+  }
+  .topBurger {
+    top: 0;
+    animation-name: top-burger-open;
+  }
+
+  .middleBurger {
+    top: 10px;
+    animation-name: middle-burger-open;
+
+  }
+
+  .bottomBurger {
+    top: 20px;
+    animation-name: bottom-burger-open;
+  }
+
+  .animateTopBarClose {
+    z-index: 1;
+    animation-name: top-burger-close;
+    background: $brand-grey;
+    transform: rotate(45deg) scale(1.25, 1.25);
+    animation-duration: 1.5s;
+  }
+
+  .animateBottomBarClose {
+    animation-name: bottom-burger-close;
+    background: $brand-grey;
+    transform: rotate(-45deg) scale(1.25, 1.25);
+    animation-duration: 1.5s;
+  }
+
+  .menu {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 1em;
+    padding: $padding-base-vert $padding-base-hori;
+    background-color: $brand-primary;
+    box-shadow: $all-shadow;
+    animation-name: menu-open-animation;
+    animation-duration: 1s;
+
+    .logo {
+      text-align: center;
+    }
+  }
+
+  .menuHidden {
+    @extend .menu;
+    opacity: 0;
+    animation-name: menu-close-animation;
+    animation-duration: 1s;
+  }
+
+  .menu-nav {
+    position: absolute;
+    text-align: center;
+    width: 75%;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+
+    ul {
+      list-style: none;
+    }
+    li {
+      display: inline-block;
+      font-size: $font-size-h1;
+      font-family: $headings-font-family;
+      color: $headings-color;
+      margin-right: 3em;
+      cursor: pointer;
+    }
+  }
+}

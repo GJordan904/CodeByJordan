@@ -1,0 +1,18 @@
+.vertical-responsive {
+  height: auto;
+  width: 100%;
+}
+.horizontal-responsive {
+  height: 100%;
+  width: auto;
+}
+.grid-photo {
+  height: 100vh;
+  padding: 0;
+}
+.filter {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
