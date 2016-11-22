@@ -88,8 +88,8 @@ angular.module('app.directives', [])
                 canvas.css('height', container.height(), 'width', container.width());
             });
 
-            game.state.add('Boot', BootState(game));
-            game.state.start('Boot');
+            game.state.add('Boot', new BootState());
+            game.state.start('Boot', true, false, game);
         }
     }
 });

@@ -2,34 +2,33 @@
 
 angular.module('planetoids.player', [])
 
-.factory('Player', function() {
+.factory('Player', function($timeout) {
 
-    var Player = function(game, bullets) {
+    var Player = function(game, bullets, explosions) {
         this.game = game;
         this.bullets = bullets;
+        this.explosions = explosions;
 
-        this.ship = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
-        this.ship.angle += -90;
-        utils.centerGameObject([this.ship]);
-        game.physics.enable(this.ship, Phaser.Physics.ARCADE);
-        this.ship.body.drag.set(100);
-        this.ship.body.maxVelocity.set(200);
-        this.ship.body.immovable = false;
+        this.sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
+        this.sprite.angle += -90;
+        utils.centerGameObject([this.sprite]);
+        game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+        this.sprite.body.drag.set(100);
+        this.sprite.body.maxVelocity.set(200);
+        this.sprite.body.immovable = false;
 
-        this.health = 5;
-        this.hearts = game.add.sprite(game.width-61, 0, 'health', this.health);
+        this.health = 8;
+        this.hearts = game.add.sprite(game.width-166, 0, 'health', this.health);
 
         this.bulletTime = 0;
     };
 
-    Player.prototype.damage = function() {
-        console.log(this.health);
-        this.health -= 1;
+    Player.prototype.damage = function(amount) {
+        this.health -= amount;
         this.hearts.frame = this.health;
 
-        if(this.health <= 0) {
+        return this.health <= 0;
 
-        }
     };
 
     Player.prototype.fireLaser = function() {
@@ -37,13 +36,25 @@ angular.module('planetoids.player', [])
             var bullet = this.bullets.getFirstExists(false);
 
             if(bullet) {
-                bullet.reset(this.ship.body.x + 26, this.ship.body.y + 26);
+                bullet.reset(this.sprite.body.x + 26, this.sprite.body.y + 26);
                 bullet.lifespan = 2000;
-                bullet.rotation = this.ship.rotation;
-                this.game.physics.arcade.velocityFromRotation(this.ship.rotation, 400, bullet.body.velocity);
+                bullet.rotation = this.sprite.rotation;
+                this.game.physics.arcade.velocityFromRotation(this.sprite.rotation, 400, bullet.body.velocity);
                 this.bulletTime = this.game.time.now + 100;
             }
         }
+    };
+
+    Player.prototype.kill = function(score) {
+        var self = this;
+
+        this.sprite.kill();
+        this.hearts.frame = 0;
+        var explosion =  this.explosions.getFirstExists(false);
+        explosion.reset(this.sprite.x, this.sprite.y);
+        explosion.play('explosion', 30, false, true);
+
+        $timeout(function(){self.game.state.start('Lost', true, false, self.game ,score);}, 3000);
     };
 
     return Player;

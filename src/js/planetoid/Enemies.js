@@ -16,14 +16,16 @@ angular.module('planetoid.enemies', [])
 
         this.health = 3;
         this.fireRate = 2000;
-        this.ship = game.add.sprite(x, 0, 'enemySm1');
 
-        this.ship.angle = game.rnd.angle();
-        game.physics.enable(this.ship, Phaser.Physics.ARCADE);
-        game.physics.arcade.velocityFromRotation(this.ship.rotation, 100, this.ship.body.velocity);
-        this.ship.name = index.toString();
-        this.ship.body.immovable = false;
-        this.ship.body.bounce.setTo(1, 1);
+        this.sprite = game.add.sprite(x, 0, 'enemySm1');
+        this.sprite.angle = game.rnd.angle();
+        utils.centerGameObject([this.sprite]);
+        game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+        game.physics.arcade.velocityFromRotation(this.sprite.rotation, 100, this.sprite.body.velocity);
+        this.sprite.name = index.toString();
+        this.sprite.type = 'shipSm';
+        this.sprite.body.immovable = false;
+        this.sprite.body.bounce.setTo(1, 1);
 
     };
 
@@ -32,21 +34,21 @@ angular.module('planetoid.enemies', [])
 
         if(this.health <= 0){
             this.alive = false;
-            this.ship.kill();
+            this.sprite.kill();
             return true;
         }
         return false;
     };
 
     EnemySmall.prototype.update = function() {
-        this.ship.rotation = this.game.physics.arcade.angleBetween(this.ship, this.player);
+        this.sprite.rotation = this.game.physics.arcade.angleBetween(this.sprite, this.player);
 
-        if(this.game.physics.arcade.distanceBetween(this.ship, this.player) < 750) {
+        if(this.game.physics.arcade.distanceBetween(this.sprite, this.player) < 750) {
             if(this.game.time.now > this.nextFire && this.bullets.countDead() > 0) {
                 this.nextFire = this.game.time.now + this.fireRate;
 
                 var bullet = this.bullets.getFirstDead();
-                bullet.reset(this.ship.x, this.ship.y);
+                bullet.reset(this.sprite.x, this.sprite.y);
                 bullet.rotation = this.game.physics.arcade.moveToObject(bullet, this.player, 500);
             }
         }

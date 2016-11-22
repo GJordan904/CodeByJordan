@@ -6487,7 +6487,7 @@ declare module Phaser {
     /**
     * This is a base Filter class to use for any Phaser filter development.
     * 
-    * The vast majority of filters (including all of those that ship with Phaser) use fragment shaders, and
+    * The vast majority of filters (including all of those that sprite with Phaser) use fragment shaders, and
     * therefore only work in WebGL and are not supported by Canvas at all.
     */
     class Filter extends PIXI.AbstractFilter {
@@ -6496,7 +6496,7 @@ declare module Phaser {
         /**
         * This is a base Filter class to use for any Phaser filter development.
         * 
-        * The vast majority of filters (including all of those that ship with Phaser) use fragment shaders, and
+        * The vast majority of filters (including all of those that sprite with Phaser) use fragment shaders, and
         * therefore only work in WebGL and are not supported by Canvas at all.
         * 
         * @param game A reference to the currently running game.
