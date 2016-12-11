@@ -1,8 +1,8 @@
 (function () {'use strict';
 
-angular.module('planetoids.player', [])
+angular.module('planetoid.player', [])
 
-.factory('Player', function($timeout) {
+.factory('Player', function($timeout, ptoidUtils) {
 
     var Player = function(game, bullets, explosions) {
         this.game = game;
@@ -11,16 +11,16 @@ angular.module('planetoids.player', [])
 
         this.sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'player');
         this.sprite.angle += -90;
-        utils.centerGameObject([this.sprite]);
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         this.sprite.body.drag.set(100);
         this.sprite.body.maxVelocity.set(200);
         this.sprite.body.immovable = false;
 
         this.health = 8;
-        this.hearts = game.add.sprite(game.width-166, 0, 'health', this.health);
+        this.hearts = game.add.sprite(game.width-166, 22, 'health', this.health);
 
         this.bulletTime = 0;
+        ptoidUtils.centerGameObject([this.sprite, this.hearts]);
     };
 
     Player.prototype.damage = function(amount) {
@@ -45,16 +45,11 @@ angular.module('planetoids.player', [])
         }
     };
 
-    Player.prototype.kill = function(score) {
+    Player.prototype.kill = function(score, level) {
         var self = this;
-
-        this.sprite.kill();
         this.hearts.frame = 0;
-        var explosion =  this.explosions.getFirstExists(false);
-        explosion.reset(this.sprite.x, this.sprite.y);
-        explosion.play('explosion', 30, false, true);
-
-        $timeout(function(){self.game.state.start('Lost', true, false, self.game ,score);}, 3000);
+        console.log(level);
+        $timeout(function(){self.game.state.start('Lost', true, false, self.game ,score, level);}, 3500);
     };
 
     return Player;

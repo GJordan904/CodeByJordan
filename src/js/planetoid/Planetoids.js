@@ -28,7 +28,7 @@ angular.module('planetoid.planetoids', [])
     return Planetoid;
 })
 
-.factory('PlanetoidLarge', function(Planetoid, PlanetoidMedium) {
+.factory('PlanetoidLarge', function(Planetoid, PlanetoidMedium, ptoidUtils) {
 
     var PlanetoidLarge = function(index, game, player, children, gChildren) {
         Planetoid.call(this, game, player);
@@ -42,7 +42,7 @@ angular.module('planetoid.planetoids', [])
 
         this.sprite = game.add.sprite(x, y, 'ptoidLg');
         this.sprite.angle = game.rnd.angle();
-        utils.centerGameObject([this.sprite]);
+        ptoidUtils.centerGameObject([this.sprite]);
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         game.physics.arcade.velocityFromRotation(this.sprite.rotation, 100, this.sprite.body.velocity);
         this.sprite.name = index.toString();
@@ -64,7 +64,7 @@ angular.module('planetoid.planetoids', [])
     return PlanetoidLarge;
 })
 
-.factory('PlanetoidMedium', function(Planetoid, PlanetoidSmall) {
+.factory('PlanetoidMedium', function(Planetoid, PlanetoidSmall, ptoidUtils) {
     var PlanetoidMedium = function(index, game, player, children, parent) {
         Planetoid.call(this, game, player);
 
@@ -74,7 +74,7 @@ angular.module('planetoid.planetoids', [])
         this.sprite = game.add.sprite(parent.x, parent.y, 'ptoidMd');
         if(index%2==0) this.sprite.angle = 45;
         else this.sprite.angle = -45;
-        utils.centerGameObject([this.sprite]);
+        ptoidUtils.centerGameObject([this.sprite]);
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         game.physics.arcade.velocityFromRotation(this.sprite.rotation, 100, this.sprite.body.velocity);
         this.sprite.name = index.toString();
@@ -96,7 +96,7 @@ angular.module('planetoid.planetoids', [])
     return PlanetoidMedium;
 })
 
-.factory('PlanetoidSmall', function(Planetoid) {
+.factory('PlanetoidSmall', function(Planetoid, ptoidUtils) {
     var PlanetoidSmall = function(index, game, player, parent) {
         Planetoid.call(this, game, player);
 
@@ -105,7 +105,7 @@ angular.module('planetoid.planetoids', [])
         this.sprite = game.add.sprite(parent.x, parent.y, 'ptoidSm');
         if(index%2==0) this.sprite.angle = 45;
         else this.sprite.angle = -45;
-        utils.centerGameObject([this.sprite]);
+        ptoidUtils.centerGameObject([this.sprite]);
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         game.physics.arcade.velocityFromRotation(this.sprite.rotation, 100, this.sprite.body.velocity);
         this.sprite.name = index.toString();

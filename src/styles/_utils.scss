@@ -1,3 +1,61 @@
 .no-padding {
   padding: 0 !important;
 }
+.full-size {
+  height: 100%;
+  width: 100%;
+}
+.full-height {
+  height: 100%;
+}
+.viewport-height {
+  height: 100vh;
+}
+.half-height-desk {
+  @media(min-width: $screen-xs) {
+    height: 50vh;
+  }
+}
+.dead-center {
+  position: absolute;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media(max-width: $screen-sm) {
+    position: static;
+    transform: translateY(0);
+  }
+}
+.horizontal-center {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+.attention {
+  font-size: 5em;
+  color: #DB5461;
+  margin: 0;
+
+  @media(max-width: $screen-sm) {
+    font-size: 5em;
+  }
+  @media(max-width: $screen-xs) {
+    font-size: 3em;
+  }
+}
+.nav-down {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  width: 5%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  color: $brand-danger;
+}
+

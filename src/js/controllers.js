@@ -7,13 +7,13 @@ angular.module('app.controllers', [])
    var vm = this;
 })
 
-.controller('HomeCtrl', function(videoCover){
+.controller('HomeCtrl', function(){
     var vm = this;
 
-    videoCover.initVideoSize();
-
-    $(window).on('resize', function() {
-        videoCover.scaleVideoSize();
-    })
+    // Render Google Hangout button
+    gapi.hangout.render('hangout', {
+        'render': 'createhangout',
+        'invites': [{'id': 'grant.jordan904@gmail.com', 'invite_type': 'EMAIL'}]
+    });
 });
 }());

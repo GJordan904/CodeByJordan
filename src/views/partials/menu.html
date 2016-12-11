@@ -1,21 +1,26 @@
 <button class="menu-button" ng-click="toggle()">
     <span class="hamburger" ng-class="{adjust: !isCollapsed}">
-        <span class="burger-bar" ng-class="{animateTopBarClose: !isCollapsed, topBurger: isCollapsed}"></span>
-        <span class="burger-bar" ng-class="{animateBottomBarClose: !isCollapsed, middleBurger: isCollapsed}"></span>
-        <span class="burger-bar" ng-class="{animateBottomBarClose: !isCollapsed, bottomBurger: isCollapsed}"></span>
-        <span class="menu-text animated">Menu</span>
+        <span class="burger-bar" ng-class="isCollapsed ? 'topBurger' : 'animateTopBarClose'"></span>
+        <span class="burger-bar" ng-class="isCollapsed ? 'middleBurger' : 'animateBottomBarClose'"></span>
+        <span class="burger-bar" ng-class="isCollapsed ? 'bottomBurger' : 'animateBottomBarClose'"></span>
+        <span class="menu-text animated hidden-xs">Menu</span>
     </span>
 </button>
 
-<div id="menu" class="menuHidden">
+<div id="menu" class="menuHidden container">
+    <div class="row">
+        <div class="logo"><img src="./img/logoSmall.png"></div>
+    </div>
 
-    <div class="logo"><img src="../../img/logoSmall.png"></div>
-    <nav class="menu-nav">
-        <ul>
-            <li><a ng-click="scrollToElem('main')">Home</a></li>
-            <li><a ng-click="scrollToElem('about')">About</a></li>
-            <li><a>Work</a></li>
-            <li><a>Contact</a></li>
-        </ul>
-    </nav>
+    <div class="row">
+        <nav class="menu-nav">
+            <ul>
+                <li><a nav-down="video" ng-click="toggle()">Home</a></li>
+                <li><a nav-down="skills" ng-click="toggle()">Skills</a></li>
+                <li><a nav-down="work" ng-click="toggle()">Work</a></li>
+                <li><a nav-down="about" ng-click="toggle()">About</a></li>
+                <li><a nav-down="contact" ng-click="toggle()">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 </div>

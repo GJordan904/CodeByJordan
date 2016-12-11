@@ -1,13 +1,19 @@
+html, body {
+  height: 100%;
+}
 body {
   background-color: $body-bg;
   font-size: $font-size-base;
   color: $text-color;
   font-family: $font-sans-serif;
+  line-height: $line-height-base;
+  overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: $headings-font-family;
   color: $headings-color;
   line-height: $headings-line-height;
+  margin: 1em .25em 0 .25em;
 }
 
 h1 {
@@ -30,4 +36,8 @@ h6 {
 }
 hr {
   margin: $padding-base-vert 0;
+}
+
+pre {
+  font-family: $font-monospace;
 }

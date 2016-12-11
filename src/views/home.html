@@ -1,66 +1,179 @@
-<section id="main" class="video-cover">
-    <div class="video-container">
-        <div class="filter">
-            <div class="cover-logo">
-                <img src="../img/logoLarge.png">
-                <h1>
-                    Portfolio site of aspiring developer, Grant Jordan
-                    <span>Current skills: Java, Android, Javascript, HTML, and CSS</span>
-                </h1>
-            </div>
-        </div>
-        <video autoplay loop class="fillWidth" poster="../img/video_cover/Snapshots/Love-Coding.jpg">
-            <source src="../img/video_cover/MP4/Love-Coding.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-            <source src="../img/video_cover/WEBM/Love-Coding.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
-        </video>
-    </div>
+<!-- Top Section. video-cover directive. code found in js/directives.js -->
+<section id="video" class="video-cover" video-cover></section>
 
-    <div nav-down="about" class="nav-down"><i class="fa fa-chevron-down fa-4x"></i></div>
-</section>
-
-<section id="game" class="section-primary container no-padding">
-
-    <game></game>
-
-</section>
-
-<section id="about" class="section-primary container">
+<!-- Skills section. skills-canvas directive. code found in js/directives.js -->
+<section id="skills" class="section-grey container">
     <div class="row">
-        <div class="col-4 grid-photo">
-            <div class="filter"></div>
-            <img src="../img/family.jpg" class="vertical-responsive">
+        <h1 class="horizontal-center section-title">Skills</h1>
+    </div>
+    <div class="row">
+        <skills-canvas class="col-xs-12 col-sm-9 viewport-height no-padding"></skills-canvas>
+        <div class="col-sm-3 col-xs-12">
+            <pre class="prettyprint">
+
+var skills = [
+    {
+        skill: 'HTML'
+        competency: 9
+    },
+    {
+        skill: 'CSS'
+        competency: 7
+    },
+    {
+        skill: 'Angular'
+        competency: 6
+    },
+    {
+        skill: 'Java'
+        competency: 6
+    },
+    {
+        skill: 'Android'
+        competency: 6
+    },
+    {
+        skill: 'PHP'
+        competency: 3
+    }
+]
+            </pre>
+        </div>
+    </div>
+</section>
+
+<!-- Work Section -->
+<section id="work" class="section-secondary container">
+    <my-work></my-work>
+</section>
+
+<!-- Game Section. leaderboard and game directives. code found in js/planetoids/directives.js -->
+<section id="game" class="section-grey container" in-view="inView($index, $inview, $inviewInfo)">
+    <div class="row">
+        <h1 class="horizontal-center section-title">Play</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9 col-xs-12 no-padding viewport-height">
+            <game class="full-size"></game>
         </div>
 
-        <div class="col-8">
-            <div class="container">
-                <h1>Grant Jordan</h1>
-                <hr>
+        <div class="col-md-3 col-xs-12">
+            <h2>Planetoids</h2>
+            <hr>
+            <p>Planetoids is a little arcade style game that I created for my website. I grew up on Atari and arcade games so creating this was both fun and nostalgic. My objective was to create a game similar to Asteroids but with a little extra. Below is the leaderboard, try the game out and see if you can beat my score!</p>
+            <hr>
+            <h3>Leaderboard</h3>
+            <leaderboard></leaderboard>
+        </div>
+    </div>
+</section>
 
-                <div class="row">
-                    <div class="col-6">
-                        <h2>Family</h2>
-                        <hr>
-                        <p>I have an amazing wife and two fantastic boys that make my life whole. If I'm not working on programming I'm with them.</p>
-                    </div>
-                    <div class="col-6">
-                        <h2>Student</h2>
-                        <hr>
-                        <p>I have an amazing wife and two fantastic boys that make my life whole. If I'm not working on programming I'm with the.</p>
-                    </div>
-                </div>
+<!-- About Section -->
+<section id="about" class="section-secondary container">
+    <div class="dead-center">
+        <img src="./img/family.png" class="vertical-responsive">
+    </div>
+    <div class="row">
+        <h1 class="section-title horizontal-center">Me</h1>
+    </div>
 
-                <div class="row">
-                    <div class="col-6">
-                        <h2>Problem Solver</h2>
-                        <hr>
-                    </div>
-                    <div class="col-6">
-                        <h2>Student</h2>
-                        <hr>
-                    </div>
-                </div>
-            </div>
+    <div class="row half-height-desk">
+        <div class="col-xs-12 col-sm-3">
+            <h2>Family</h2>
+            <hr>
+            <p>I chose four words to describe myself. The first and most obvious word was family. I have a beautiful family made up by my amazing wife and two outstanding boys. They make my life whole and happy and provide all the motivation a man could need.</p>
+        </div>
+
+        <div class="col-xs-12 col-sm-3 col-sm-push-6">
+            <h2>Analytical</h2>
+            <hr>
+            <p>I am a true analytical thinker. Always questioning, researching, and analyzing. The answer alone does not always suffice, I seek to know how and why something is the way it is.</p>
         </div>
     </div>
 
+    <div class="row half-height-desk">
+        <div class="col-xs-12 col-sm-3">
+            <h2>Dreamer</h2>
+            <hr>
+            <p>I like to dream, and dream big. I many times think about what could be or what could be better. </p>
+        </div>
+
+        <div class="col-xs-12 col-sm-3 col-sm-push-6">
+            <h2>Goal-Oriented</h2>
+            <hr>
+            <p>After dreaming up something big, I like to set goals and work towards them. I find that setting progressive goals towards one major goal is a great way to stay motivated and succeed.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container section-grey">
+    <div class="row">
+        <h1 class="horizontal-center section-title">Contact</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+
+            <form id="contactForm" name="contactForm" action="./php/contact.php" novalidate>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="name">Name:</label>
+                            <input id="name" type="text" ng-model="contact.name" name="name" required>
+                            <div ng-show="contactForm.$submitted || contactForm.name.$touched">
+                                <p class="error-text" ng-if="contactForm.name.$error.required">Please tell me your name.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" ng-model="contact.email" name="email" required>
+                            <div ng-show="contactForm.$submitted || contactForm.email.$touched">
+                                <p class="error-text" ng-if="contactForm.email.$error.required">An email address is required.</p>
+                                <p class="error-text" ng-if="contactForm.email.$error.email">This is not a valid email address.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label for="msg">Message:</label>
+                            <textarea id="msg" ng-model="contact.msg" name="msg" form="contactForm" required></textarea>
+                            <div ng-show="contactForm.$submitted || contactForm.msg.$touched">
+                                <p class="error-text" ng-if="contactForm.msg.$error.required">Don't you have anything to say?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-pull-4 col-xs-push-4 col-xs-4">
+                            <button type="submit" form="contactForm" class="submit">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="col-xs-12 col-sm-4">
+            <h2>Follow</h2>
+            <hr>
+            <div class="social-buttons">
+                <a href="https://github.com/GJordan904" target="_blank"><img src="./img/github-logo.png" class="s-button"></a>
+                <a href="https://www.facebook.com/codebyjordan/" target="_blank"><img src="./img/facebook-logo.png" class="s-button"></a>
+            </div>
+
+            <h2>Chat</h2>
+            <hr>
+            <div class="col-xs-4">
+                <g-hangouts></g-hangouts>
+            </div>
+            <div class="col-xs-4">
+                <fb-message></fb-message>
+            </div>
+
+        </div>
+    </div>
 </section>

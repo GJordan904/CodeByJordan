@@ -3,7 +3,7 @@
 
 angular.module('planetoid.enemies', [])
 
-.factory('EnemySmall', function() {
+.factory('EnemySmall', function(ptoidUtils) {
 
     var EnemySmall = function(index, game, player, bullets) {
         var x = game.world.randomX;
@@ -19,7 +19,7 @@ angular.module('planetoid.enemies', [])
 
         this.sprite = game.add.sprite(x, 0, 'enemySm1');
         this.sprite.angle = game.rnd.angle();
-        utils.centerGameObject([this.sprite]);
+        ptoidUtils.centerGameObject([this.sprite]);
         game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         game.physics.arcade.velocityFromRotation(this.sprite.rotation, 100, this.sprite.body.velocity);
         this.sprite.name = index.toString();
@@ -34,7 +34,6 @@ angular.module('planetoid.enemies', [])
 
         if(this.health <= 0){
             this.alive = false;
-            this.sprite.kill();
             return true;
         }
         return false;

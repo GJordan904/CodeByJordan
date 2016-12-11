@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src',
-                    src: ['index.html'],
+                    src: ['index.html', 'php/*', 'bower_components/please-wait/**/*', 'fonts/*', 'img/video_cover/**/*'],
                     dest: 'dist/'
                 }]
             }
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         ngtemplates: {
             build: {
                 cwd: 'src',
-                src: 'views/**.html',
+                src: 'views/**/**.html',
                 dest: '.tmp/templates.js',
                 options: {
                     module: 'app',
@@ -64,7 +64,8 @@ module.exports = function(grunt) {
         wiredep: {
             app: {
                 src: ['src/index.html'],
-                directory: 'src/bower_components'
+                directory: 'src/bower_components',
+                exclude: ['src/bower_components/please-wait']
             }
         },
         useminPrepare: {
@@ -75,6 +76,13 @@ module.exports = function(grunt) {
         },
         usemin: {
             html: ['dist/index.html']
+        },
+        uglify: {
+            generated: {
+                options: {
+                    sourceMap: true
+                }
+            }
         },
 
         // Compile SCSS to CSS
@@ -214,6 +222,6 @@ module.exports = function(grunt) {
     grunt.registerTask('serveBuild', [
         'connect:build',
         'watch'
-    ])
+    ]);
 };
 }());

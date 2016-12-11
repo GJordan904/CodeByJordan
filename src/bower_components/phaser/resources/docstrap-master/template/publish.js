@@ -52,7 +52,7 @@ var navigationMaster = {
 		members : []
 	},
 	class     : {
-		title   : "Classes",
+		title   : "Bodies",
 		link    : helper.getUniqueFilename( 'classes.list' ),
 		members : []
 	},

@@ -1,4 +1,8 @@
-// Main SCSS Import File for Code By Jordan
+/*
+ * Author: Grant Jordan
+ * Site: codebyjordan.com
+ * Date: 12/4/16
+ */
 
 // Variables and Mixins
 @import 'variables';
@@ -15,6 +19,8 @@
 @import 'sections';
 @import 'header';
 @import "video-cover";
+@import "leaderboard";
+@import "contact";
 
 // Animations
 @import 'animation';

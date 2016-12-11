@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
     <title>Code by Jordan</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta name="viewport" content="initial-scale=1, width=device-width user-scalable=no">
 
     <link rel="stylesheet" href="styles/vendor.css">
     <link rel="stylesheet" href="styles/main.css">
@@ -11,7 +11,19 @@
 </head>
 <body>
 
+
     <div ui-view></div>
+
+    <!-- Start Loading Screen -->
+    <script src="bower_components/please-wait/build/please-wait.js"></script>
+    <script>
+        window.page_loading_screen =  pleaseWait({
+            logo: 'img/logoLarge.png',
+            backgroundColor: '#333',
+            loadingHtml: '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>'
+        });
+
+    </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -24,12 +36,22 @@
         ga('send', 'pageview');
     </script>
 
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/1c2d7da634.js"></script>
-
     <script src="js/vendor.js"></script>
 
     <script src="js/app.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/1c2d7da634.js"></script>
+
+    <!-- Google Hangout Button  -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Bootstrap Angular -->
+    <script>
+        angular.element(document).ready(function () {
+            angular.bootstrap(document.body, ['app']);
+        });
+    </script>
 
 </body>
 </html>

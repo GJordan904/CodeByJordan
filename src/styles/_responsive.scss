@@ -1,4 +1,20 @@
-.img-responsive {
-  width: 100%;
-  height: auto;
+.hidden-xs {
+  @media (max-width: $screen-xs) {
+    display: none;
+  }
+}
+.hidden-sm {
+  @media (max-width: $screen-sm) {
+    display: none;
+  }
+}
+.hidden-md {
+  @media (max-width: $screen-md) {
+    display: none;
+  }
+}
+.hidden-lg {
+  @media (max-width: $screen-lg) {
+    display: none;
+  }
 }

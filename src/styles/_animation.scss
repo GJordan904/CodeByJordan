@@ -1,7 +1,16 @@
+/*
+ * CSS Animations
+ *
+ *
+ */
+
 .hidden {
   visibility: hidden;
 }
-// Menu Animation
+/*
+ * @desc rotates top bar around and ends in an X with the bottom bar
+ *
+ */
 @keyframes top-burger-close {
   0%{
     background: $brand-secondary;
@@ -20,6 +29,16 @@
     background: $brand-grey;
   }
 }
+.animateBottomBarClose {
+  animation-name: bottom-burger-close;
+  background: $brand-grey;
+  transform: rotate(-45deg) scale(1.25, 1.25);
+  animation-duration: 1.5s;
+}
+/*
+ * @desc rotates bottom bar around and ends in an X with the top bar
+ *
+ */
 @keyframes bottom-burger-close {
   0%{
     background: $brand-secondary;
@@ -38,6 +57,17 @@
     background: $brand-grey;
   }
 }
+.animateTopBarClose {
+  z-index: 1;
+  animation-name: top-burger-close;
+  background: $brand-grey;
+  transform: rotate(45deg) scale(1.25, 1.25);
+  animation-duration: 1.5s;
+}
+/*
+ * @desc rotates top bar around and ends in top position
+ *
+ */
 @keyframes top-burger-open {
   0%{
     background: $brand-grey;
@@ -55,6 +85,14 @@
     background: $brand-secondary;
   }
 }
+.topBurger {
+  top: 0;
+  animation-name: top-burger-open;
+}
+/*
+ * @desc rotates bottom bar around and ends in bottom position
+ *
+ */
 @keyframes bottom-burger-open {
   0%{
     background: $brand-grey;
@@ -72,6 +110,13 @@
     background: $brand-secondary;
   }
 }
+.bottomBurger {
+  top: 20px;
+  animation-name: bottom-burger-open;
+}
+/*
+ * @desc scales middle bar at values of 0-2-1 giving a popout effect
+ */
 @keyframes middle-burger-open {
   0%{
     background: $brand-grey;
@@ -85,22 +130,87 @@
     background: $brand-secondary;
   }
 }
+.middleBurger {
+  top: 10px;
+  animation-name: middle-burger-open;
+
+}
+/*
+ * @desc loading animation for initial page load
+ * @source http://tobiasahlin.com/spinkit/
+ */
+.spinner {
+  margin: 100px auto;
+  width: 100px;
+  height: 80px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: $brand-danger;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  margin: 0 3px;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+       transform: scaleY(1.0);
+       -webkit-transform: scaleY(1.0);
+     }
+}
+
+// These animations were found online.
+// TODO: Find source of these animations to give proper attribution
 @keyframes menu-open-animation {
   0% {
     opacity: 0;
-    transform-origin: 50% 0%;
+    transform-origin: 50% 0;
     transform: perspective(800px) rotateX(-90deg);
   }
 
   50% {
     opacity: 1;
-    transform-origin: 50% 0%;
+    transform-origin: 50% 0;
     transform: perspective(800px) rotateX(50deg);
   }
 
   100% {
     opacity: 1;
-    transform-origin: 50% 0%;
+    transform-origin: 50% 0;
     transform: perspective(800px) rotateX(0deg);
   }
 }
@@ -119,13 +229,13 @@
 
   30% {
     opacity: 1;
-    transform-origin: 0% 100%;
+    transform-origin: 0 100%;
     transform: perspective(800px) rotateX(0deg) rotateY(0deg);
   }
 
   40% {
     opacity: 1;
-    transform-origin: 0% 100%;
+    transform-origin: 0 100%;
     transform: perspective(800px) rotateX(10deg) rotateY(10deg);
   }
 

@@ -1,39 +1,68 @@
+// Sections
+.section-title {
+  padding-top: 0.25em;
+  font-size: 4em;
+
+}
 .section-primary {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   background-color: $brand-primary;
 }
-.about-text {
-  padding: $padding-large-vert $padding-large-hori;
+.section-secondary {
+  position: relative;
+  min-height: 100vh;
+  background-color: $brand-secondary;
+  color: $brand-white;
 
-  h1 {
-    font-size: 8em;
-    margin: $padding-small-vert $padding-small-hori;
+  h1, h2, h3, h4, h5, h6 {
+    color: $brand-grey;
   }
   h2 {
-    font-size: 3em;
-    margin: $padding-small-vert $padding-small-hori;
+    margin: 0;
   }
-  .column {
-    display: inline-block;
-    width: 20%;
-    margin-left: 5%;
-    height: 35%;
+}
+.section-grey {
+  min-height: 100vh;
+  background-color: #333;
+}
+.section-blue {
+  position: relative;
+  min-height: 100vh;
+  background-color: $brand-blue;
+}
+.work-info {
+  padding: 0;
 
-    hr {
-      width: 75%;
+  .work-nav {
+    h2 {
+      font-size: $font-size-h5;
+      text-align: center;
+      margin: 0;
+    }
+
+    @media(max-width: $screen-sm) {
+      h2 {
+        margin: $padding-small-vert 0;
+      }
     }
   }
-}
-#game-canvas {
-  height: 100%;
-}
-.nav-down {
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  width: 5%;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  color: $brand-danger;
+  .tag {
+    display: inline-block;
+    padding: 0 $padding-base-hori;
+    margin: $padding-base-vert $padding-base-hori;
+    color: $brand-primary;
+    background-color: $brand-danger;
+    border: 2px solid $brand-grey;
+    border-radius: 15px;
+  }
+
+  .fa-chevron-right, .fa-chevron-left {
+    cursor: pointer;
+    color: $brand-grey;
+  }
+
+  .fa-chevron-right {
+    float: right;
+  }
 }

@@ -3,10 +3,11 @@
 angular.module('app', [
     'app.controllers',
     'app.directives',
-    'app.videoCover',
     'planetoid',
     'ngAnimate',
+    'ngCookies',
     'duScroll',
+    'angular-inview',
     'ui.router'
 ])
 

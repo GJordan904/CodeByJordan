@@ -1,0 +1,29 @@
+<div class="leaderboard container">
+    <div class="col-xs-4">
+        <h4>Name</h4>
+    </div>
+
+    <div class="col-xs-4">
+        <h4>Score</h4>
+    </div>
+
+    <div class="col-xs-4">
+        <h4>Level</h4>
+    </div>
+
+    <div class="col-xs-12">
+        <hr>
+    </div>
+
+    <div ng-repeat="leader in board.leaders">
+        <div class="col-xs-4">
+            <p>{{leader.name}}</p>
+        </div>
+        <div class="col-xs-4">
+            <p>{{leader.score}}</p>
+        </div>
+        <div class="col-xs-4">
+            <p>{{leader.level}}</p>
+        </div>
+    </div>
+</div>

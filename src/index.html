@@ -1,22 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
     <title>Code by Jordan</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta name="viewport" content="initial-scale=1, width=device-width user-scalable=no">
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
     <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/please-wait/build/please-wait.css">
+    <link rel="stylesheet" href="libs/prettify/prettify.css">
     <!-- endbuild -->
     <link rel="stylesheet" href="styles/main.css">
 
 </head>
 <body>
 
+
     <div ui-view></div>
+
+    <!-- Start Loading Screen -->
+    <script src="bower_components/please-wait/build/please-wait.js"></script>
+    <script>
+        window.page_loading_screen =  pleaseWait({
+            logo: 'img/logoLarge.png',
+            backgroundColor: '#333',
+            loadingHtml: '<div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div>'
+        });
+
+    </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -29,9 +43,6 @@
         ga('send', 'pageview');
     </script>
 
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/1c2d7da634.js"></script>
-
     <!-- build:js js/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -40,21 +51,45 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-scroll/angular-scroll.js"></script>
     <script src="bower_components/phaser/build/phaser.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-inview/angular-inview.js"></script>
     <!-- endbower -->
+    <script src="libs/threejs/three.js"></script>
+    <script src="libs/threejs/OrbitControls.js"></script>
+    <script src="libs/prettify/prettify.js"></script>
     <!-- endbuild -->
 
     <!-- build:js(src) js/app.js -->
     <script src="app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/directives.js"></script>
-    <script src="js/videoCover.js"></script>
+
+    <script src="js/planetoid/libs/phaser-input/phaser-input.js"></script>
     <script src="js/planetoid/game.js"></script>
     <script src="js/planetoid/states.js"></script>
-    <script src="js/planetoid/Enemies.js"></script>
-    <script src="js/planetoid/Player.js"></script>
-    <script src="js/planetoid/Planetoids.js"></script>
-    <script src="js/planetoid/Collisions.js"></script>
+    <script src="js/planetoid/Bodies/Enemies.js"></script>
+    <script src="js/planetoid/Bodies/Player.js"></script>
+    <script src="js/planetoid/Bodies/Planetoids.js"></script>
+    <script src="js/planetoid/Bodies/Collisions.js"></script>
+    <script src="js/planetoid/Scoring/Scoring.js"></script>
+    <script src="js/planetoid/ptoidUtils.js"></script>
+    <script src="js/planetoid/Bodies/Bonuses.js"></script>
+    <script src="js/planetoid/Scoring/leaderboard.js"></script>
+    <script src="js/planetoid/directives.js"></script>
     <!-- endbuild -->
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/1c2d7da634.js"></script>
+
+    <!-- Google Hangout Button  -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- Bootstrap Angular -->
+    <script>
+        angular.element(document).ready(function () {
+            angular.bootstrap(document.body, ['app']);
+        });
+    </script>
 
 </body>
 </html>

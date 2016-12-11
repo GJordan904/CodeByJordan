@@ -2,11 +2,15 @@
   border-right: none;
   border-left: none;
   position: relative;
+
+  @media(max-width: $screen-sm) {
+    height: 100vh;
+  }
 }
 .video-container {
   position: relative;
-  bottom: 0%;
-  left: 0%;
+  bottom: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -31,16 +35,20 @@
   }
   video.fillWidth {
     width: 100%;
+
+    @media(max-width: $screen-sm) {
+      height: 100%;
+      width: auto;
+    }
   }
 }
 .cover-logo {
   position: absolute;
-  width: 75%;
+  width: 50%;
   margin: 0 auto;
-  right: 0;
-  left: 0;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
 
   h1 span {
@@ -48,4 +56,13 @@
     font-size: $font-size-xsmall;
     line-height: $line-height-base;
   }
+
+  @media(max-width: $screen-sm) {
+    width: 95%;
+
+    h1 {
+      font-size: $font-size-large;
+    }
+  }
+
 }

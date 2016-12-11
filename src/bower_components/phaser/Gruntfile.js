@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         var modules = {
             'intro':            { 'description': 'Phaser UMD wrapper',                          'optional': true, 'stub': false },
             'phaser':           { 'description': 'Phaser Globals',                              'optional': false, 'stub': false },
-            'geom':             { 'description': 'Geometry Classes',                            'optional': false, 'stub': false },
+            'geom':             { 'description': 'Geometry Bodies',                            'optional': false, 'stub': false },
             'core':             { 'description': 'Phaser Core',                                 'optional': false, 'stub': false },
             'input':            { 'description': 'Input Manager + Mouse and Touch Support',     'optional': false, 'stub': false },
             'gamepad':          { 'description': 'Gamepad Input',                               'optional': true, 'stub': false },
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
             'retrofont':        { 'description': 'Retro Fonts Game Object',                     'optional': true, 'stub': false },
             'rope':             { 'description': 'Rope and Strip Game Object',                  'optional': true, 'stub': false },
             'tilesprite':       { 'description': 'Tile Sprite Game Object',                     'optional': true, 'stub': true },
-            'system':           { 'description': 'System Classes',                              'optional': false, 'stub': false },
+            'system':           { 'description': 'System Bodies',                              'optional': false, 'stub': false },
             'math':             { 'description': 'Math, QuadTree and RND',                      'optional': false, 'stub': false },
             'net':              { 'description': 'Network Class',                               'optional': true, 'stub': true },
             'tweens':           { 'description': 'Tween Manager',                               'optional': true, 'stub': true },
