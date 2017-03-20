@@ -33,6 +33,7 @@ angular.module('planetoid.directives', [])
 
             var setBoard =  function() {
                 leaderFact.getLeaders().then(function(response){
+                    console.log(response);
                     vm.leaders = response;
                 })
             };

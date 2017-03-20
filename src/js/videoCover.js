@@ -5,52 +5,29 @@ angular.module('app.videoCover', [])
 
     .factory('videoCover', function() {
         var methods = {};
-        // Elements
-        var vidCover = $('.video-cover'),
-            poster = $('.video-container .poster img'),
-            filter = $('.video-container .filter'),
-            video = $('.video-container video');
 
-        methods.initVideoSize = function() {
-            initSize(poster);
-            initSize(filter);
-            initSize(video);
-            vidCover.css('height', video.height());
+        methods.initVideoSize = function(video) {
+            video.data('height', video.height());
+            video.data('width', video.width());
+            scaleSize(video)
         };
 
-        methods.scaleVideoSize = function() {
-            scaleSize(poster);
-            scaleSize(filter);
-            scaleSize(video);
-            vidCover.css('height', video.height());
-        };
-
-        function initSize(element) {
-            element.each(function() {
-                $(this).data('height', $(this).height());
-                $(this).data('width', $(this).width());
-            });
-            scaleSize(element)
-        }
-
-        function scaleSize(element) {
+        function scaleSize(elem) {
             var windowWidth = $(window).width(),
-                windowHeight = $(window).height() + 5,
-                videoWidth,
-                videoHeight;
+                windowHeight = $(window).height(),
+                aspectRatio = elem.data('height') / elem.data('width'),
+                videoHeight, videoWidth;
 
-            element.each(function(){
-                var aspectRatio = $(this).data('height') / $(this).data('width');
-
-                $(this).width(windowWidth);
-
-                if(windowWidth < 1000) {
-                    videoHeight = windowHeight;
-                    videoWidth = videoHeight / aspectRatio;
-                    $(this).css({'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + "px"});
-                    $(this).width(videoWidth).height(videoHeight);
-                }
-            })
+            if(windowWidth < 1000) {
+                videoHeight = windowHeight;
+                videoWidth = windowWidth;
+                elem.css({'margin-top': 0, 'margin-left': -(videoWidth - windowWidth) / 2 + "px"});
+                elem.width(videoWidth).height(videoHeight);
+            }else{
+                videoHeight = windowHeight;
+                videoWidth = windowWidth;
+                elem.width(videoWidth).height(videoHeight);
+            }
         }
 
         return methods;

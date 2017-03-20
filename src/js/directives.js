@@ -85,7 +85,7 @@ angular.module('app.directives', [])
  * @desc sets height of the video cover and adjusts on window resize
  * @attrs none
  */
-.directive('videoCover', function ($window) {
+.directive('videoCover', function ($window, videoCover) {
     return {
         restrict: 'A',
         templateUrl: 'views/partials/videoCover.html',
@@ -93,11 +93,10 @@ angular.module('app.directives', [])
             var video = elem.find('video'),
                 window = angular.element($window);
 
-            if(window.width()>480) elem.css('height', video.height());
-
-            window.on('resize', function() {
+            videoCover.initVideoSize(video);
+            /*window.on('resize', function() {
                 if(window.width()>480) elem.css('height', video.height());
-            });
+            });*/
         }
     };
 })
@@ -170,31 +169,34 @@ angular.module('app.directives', [])
             var vm = this,
                 elem = angular.element('#workView'),
                 currentId = 2,
-                maxId = 2;
+                maxId;
+
+            // Count the number of works to display and set maxId
+            $http.get('./php/works.php', {params: {action: 'countWork'}})
+                .then(function (result) {
+                    maxId = result.data[0]['COUNT(*)'];
+                });
 
             vm.iframeLink = '';
             vm.isScrollable = 'no';
             vm.title = '';
             vm.description = '';
             vm.tags = [];
+            vm.scroll = "no";
 
             vm.nextWork = function() {
                 if(currentId<maxId) currentId++;
                 else currentId = 1;
-                if(currentId == 2) vm.isScrollable = 'no';
-                else vm.isScrollable = 'yes';
                 $animate.addClass(elem, 'slideOutRight').then(function () {
-                    getWork('next');
+                    getWork(1);
                 });
             };
 
             vm.prevWork = function () {
                 if(currentId !== 1) currentId--;
                 else currentId = maxId;
-                if(currentId == 2) vm.isScrollable = 'no';
-                else vm.isScrollable = 'yes';
                 $animate.addClass(elem, 'slideOutLeft').then(function () {
-                    getWork('prev');
+                    getWork(2);
                 });
             };
 
@@ -206,13 +208,16 @@ angular.module('app.directives', [])
                             vm.title = response.data[0].title;
                             vm.description = response.data[0].about;
                             vm.tags = response.data[0].tags.split(',');
+
+                            if(currentId == 4) vm.scroll = "no";
+                            else vm.scroll = "yes";
                         }
                         switch(direction) {
-                            case 'prev':
-                                elem.removeClass('slideOutLeft').addClass('slideInRight');
-                                break;
-                            case 'next':
+                            case 1:
                                 elem.removeClass('slideOutRight').addClass('slideInLeft');
+                                break;
+                            case 2:
+                                elem.removeClass('slideOutLeft').addClass('slideInRight');
                                 break;
                         }
                     });
@@ -259,89 +264,73 @@ angular.module('app.directives', [])
             var loader = new THREE.FontLoader();
 
             // Camera
-            var camera = new THREE.PerspectiveCamera(50, elem.width() / elem.height(), 1, 1000);
-            camera.position.z = 11;
+            var camera = new THREE.PerspectiveCamera(60, elem.width() / elem.height(), 1, 1000);
+
+            if(elem.width()<490) camera.position.z = 20;
+            else camera.position.z = 15;
 
             // Light
-            scene.add(new THREE.AmbientLight(0xffffff, 1));
-            var light1 = new THREE.DirectionalLight(0xffffff),
-                light2 = new THREE.DirectionalLight(0xffffff, 0.5);
-            light1.position.set(0, 0, 5);
+            scene.add(new THREE.AmbientLight(0xffffff, .65));
+            var light1 = new THREE.DirectionalLight(0xffffff, .35),
+                light2 = new THREE.DirectionalLight(0xffffff, .35);
+            light1.position.set(50, 0, 15);
             light2.position.set(-50, 0, 15);
-            //scene.add(light1);
+            scene.add(light1);
             scene.add(light2);
 
             //Controls
             var controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.minDistance = 11;
-            controls.maxDistance = 11;
+            controls.minDistance = 15;
+            controls.maxDistance = 20;
 
             // Group
             var group = new THREE.Group();
             scene.add(group);
 
             //
-            // Octahedron Setup
+            // Dodecahedron Setup
             //
-            var octaGeo = new THREE.OctahedronGeometry(2);
+            var geometry = new THREE.DodecahedronGeometry(3);
 
-            // Assign Colors to Vertices
-            var faceIndices = ['a', 'b', 'c', 'd'];
-            for(var i=0; i<octaGeo.faces.length; i++) {
-                var face = octaGeo.faces[i],
-                    numberOfSides = (face instanceof THREE.Face3) ? 3 : 4,
-                    hexes = [
-                        0x8AA29E,
-                        0x86BA90,
-                        0xFFF9A5,
-                        0xDB5461,
-                        0xE3F2FD
-                    ];
-
-                for(var j=0; j<numberOfSides; j++) {
-                    var vertexIndex = face[faceIndices[j]],
-                        color = new THREE.Color(0xDB5461),
-                        hex = hexes[Math.floor(Math.random()*4)];
-
-                    color.setHex(hex);
-                    face.vertexColors[j] = color;
-                }
-            }
-
+            var texture = new THREE.ImageUtils.loadTexture('img/texture.jpg');
             var octaMaterials = [
-                new THREE.MeshPhongMaterial({color: 0xffffff, shininess: 50, vertexColors: THREE.FaceColors}),
-                new THREE.MeshBasicMaterial({color: 0xffffff, shading: THREE.FlatShading, wireframe: true, transparent: true })
+                new THREE.MeshPhongMaterial({map: texture, shininess: 75}),
+                new THREE.MeshPhongMaterial({color: 0xDB5461, shininess: 75, wireframe: true, transparent: true })
             ];
-            group.add(THREE.SceneUtils.createMultiMaterialObject(octaGeo, octaMaterials));
+            group.add(THREE.SceneUtils.createMultiMaterialObject(geometry, octaMaterials));
             // Draw Lines out of the vertices of the Octahedron
             // Add text to the end of the lines
             var textObjects = [];
             var lMaterial = new THREE.LineBasicMaterial({color: 0xDB5461});
+            var lineIndex = 0;
 
-            for(i=0; i<octaGeo.vertices.length; i++) {
-                var vertex = octaGeo.vertices[i];
-                var lineGeometry = new THREE.Geometry(),
-                    lineEndX = vertex.x*2,
-                    lineEndY = vertex.y*2,
-                    lineEndZ = vertex.z*2;
+            for(var i=0; i<geometry.vertices.length; i++) {
+                if(i % 3 == 0) {
+                    var vertex = geometry.vertices[i];
+                    var lineGeometry = new THREE.Geometry(),
+                        lineEndX = vertex.x * 2,
+                        lineEndY = vertex.y * 2,
+                        lineEndZ = vertex.z * 2;
 
-                lineGeometry.vertices.push(
-                    new THREE.Vector3(vertex.x, vertex.y, vertex.z ),
-                    new THREE.Vector3(lineEndX, lineEndY, lineEndZ)
-                );
-                var line = new THREE.Line(lineGeometry, lMaterial);
-                group.add(line);
+                    lineGeometry.vertices.push(
+                        new THREE.Vector3(vertex.x, vertex.y, vertex.z),
+                        new THREE.Vector3(lineEndX, lineEndY, lineEndZ)
+                    );
+                    var line = new THREE.Line(lineGeometry, lMaterial);
+                    group.add(line);
 
-                makeText(i, lineEndX, lineEndY, lineEndZ);
+                    makeText(lineIndex, lineEndX, lineEndY, lineEndZ);
+                    lineIndex++;
+                }
             }
 
             //
             // Spheres Setup
             //
-            var innerSphere = new THREE.SphereGeometry(2.15, 64, 64);
-            var outerSphere = new THREE.SphereGeometry(2.75, 16, 16);
+            var innerSphere = new THREE.SphereGeometry(3, 64, 64);
+            var outerSphere = new THREE.SphereGeometry(4.25, 32, 32);
             var sMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.25, shading: THREE.FlatShading, wireframe: true, transparent: true });
-            group.add(new THREE.Mesh(innerSphere, sMaterial));
+            //group.add(new THREE.Mesh(innerSphere, sMaterial));
             group.add(new THREE.Mesh(outerSphere, sMaterial));
 
             // Handle window resize
@@ -356,6 +345,7 @@ angular.module('app.directives', [])
                 var tMaterial = new THREE.MeshPhongMaterial({color: 0xFFF9A5, shininess: 50}),
                     skills = [
                     'PHP',
+                    'Javascript',
                     'Angular',
                     'CSS',
                     'Java',
@@ -379,6 +369,20 @@ angular.module('app.directives', [])
                 });
             }
             // Render the scene
+            function renderPhone() {
+                requestAnimationFrame(renderPhone);
+                group.rotation.z += .01;
+                group.rotation.x += .01;
+                group.rotation.y += .01;
+                if(textObjects.length>0){
+                    angular.forEach(textObjects, function(val) {
+                        val.rotation.x += .01;
+                        val.rotation.y += .01;
+                        val.rotation.z += .01;
+                    });
+                }
+                renderer.render(scene, camera);
+            }
             function render() {
                 requestAnimationFrame(render);
                 if(textObjects.length>0){
@@ -388,7 +392,8 @@ angular.module('app.directives', [])
                 }
                 renderer.render(scene, camera);
             }
-            render();
+            if(elem.width()<490) renderPhone();
+            else render();
             prettyPrint();
         }
     };

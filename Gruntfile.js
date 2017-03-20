@@ -215,7 +215,7 @@ module.exports = function(grunt) {
         'wiredep',
         'sass:dev',
         'jshint',
-        'connect:dev',
+        //'connect:dev',
         'watch'
     ]);
 

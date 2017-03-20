@@ -594,7 +594,8 @@ pre {
 
 .section-title {
   padding-top: 0.25em;
-  font-size: 4em; }
+  font-size: 4em;
+  position: relative; }
 
 .section-primary {
   position: relative;
@@ -619,6 +620,16 @@ pre {
   position: relative;
   min-height: 100vh;
   background-color: #102542; }
+
+.section-contact {
+  position: relative;
+  background: url(../img/contact.jpg) no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  border-top: 1px solid #102542;
+  padding: 0; }
+  .section-contact h1, .section-contact h2, .section-contact h3, .section-contact h4, .section-contact h5, .section-contact h6 {
+    color: #FAFAFA; }
 
 .work-info {
   padding: 0; }
@@ -735,10 +746,8 @@ pre {
 .video-cover {
   border-right: none;
   border-left: none;
-  position: relative; }
-  @media (max-width: 768px) {
-    .video-cover {
-      height: 100vh; } }
+  position: relative;
+  height: 100vh; }
 
 .video-container {
   position: relative;
@@ -761,13 +770,7 @@ pre {
   .video-container video {
     position: absolute;
     z-index: 0;
-    bottom: 0; }
-  .video-container video.fillWidth {
-    width: 100%; }
-    @media (max-width: 768px) {
-      .video-container video.fillWidth {
-        height: 100%;
-        width: auto; } }
+    object-fit: cover; }
 
 .cover-logo {
   position: absolute;
@@ -798,9 +801,9 @@ pre {
   margin: 0 auto; }
   #contactForm label {
     display: block;
-    font-size: 2.25em; }
+    font-size: 1.75em; }
   #contactForm input {
-    background-color: #8AA29E;
+    background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 50px;
     border-color: #686963; }
@@ -824,7 +827,7 @@ pre {
 #msg {
   height: 50vh;
   width: 100%;
-  background-color: #8AA29E;
+  background-color: rgba(0, 0, 0, 0.5);
   border-color: #686963; }
 
 .social-buttons {

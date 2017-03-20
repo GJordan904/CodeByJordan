@@ -14,7 +14,7 @@ class DB {
     }
 
     private function connect() {
-        $config = parse_ini_file('database.ini');
+        $config = parse_ini_file('../../configs/database.ini');
 
         $dsn = "mysql:host=".$config['host'].";dbname=".$this->dbName.";charset=utf8";
         $opt = [

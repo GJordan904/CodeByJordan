@@ -2,10 +2,7 @@
   border-right: none;
   border-left: none;
   position: relative;
-
-  @media(max-width: $screen-sm) {
-    height: 100vh;
-  }
+  height: 100vh;
 }
 .video-container {
   position: relative;
@@ -31,15 +28,7 @@
   video {
     position: absolute;
     z-index: 0;
-    bottom: 0;
-  }
-  video.fillWidth {
-    width: 100%;
-
-    @media(max-width: $screen-sm) {
-      height: 100%;
-      width: auto;
-    }
+    object-fit: cover;
   }
 }
 .cover-logo {

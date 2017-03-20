@@ -3,6 +3,7 @@
 angular.module('app', [
     'app.controllers',
     'app.directives',
+    'app.videoCover',
     'planetoid',
     'ngAnimate',
     'ngCookies',

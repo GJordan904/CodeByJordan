@@ -2,7 +2,7 @@
 .section-title {
   padding-top: 0.25em;
   font-size: 4em;
-
+  position: relative;
 }
 .section-primary {
   position: relative;
@@ -30,6 +30,18 @@
   position: relative;
   min-height: 100vh;
   background-color: $brand-blue;
+}
+.section-contact {
+  position: relative;
+  background: url(../img/contact.jpg) no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  border-top: 1px solid $brand-blue;
+  padding: 0;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $brand-white;
+  }
 }
 .work-info {
   padding: 0;
